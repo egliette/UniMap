@@ -5,11 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-<<<<<<< HEAD
       ticks: 638073236152502676
-=======
-      ticks: 638076491179741551
->>>>>>> 5c0b79acafb033e8eb6f8fe85a2f2bb0ea102670
     m_Hash: 3832827045
   m_LockFileStatus:
     m_FilePath: D:/UnityProjects/UniMap/UniMap/Packages/packages-lock.json
@@ -17,13 +13,8 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-<<<<<<< HEAD
       ticks: 638070428149956228
     m_Hash: 3928952878
-=======
-      ticks: 638076491179741551
-    m_Hash: 777727901
->>>>>>> 5c0b79acafb033e8eb6f8fe85a2f2bb0ea102670
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
