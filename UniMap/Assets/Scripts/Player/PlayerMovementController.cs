@@ -1,13 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovementController : MonoBehaviour
 {
+    private float m_horizontalInput;
+    private float m_verticalInput;
+
+
     #region moving
 
     [SerializeField] private CharacterController m_characterController;
-    [SerializeField] private float m_speed = 10f;
+    [SerializeField] private float m_speed;
 
     #endregion
 
@@ -47,10 +52,10 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Move()
     {
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        m_horizontalInput = Input.GetAxis("Horizontal");
+        m_verticalInput = Input.GetAxis("Vertical");
 
-        Vector3 direction = transform.right * x + transform.forward * z;
+        Vector3 direction = transform.right * m_horizontalInput + transform.forward * m_verticalInput;
         m_characterController.Move(direction * m_speed * Time.deltaTime);
 
         if (Input.GetButtonDown("Jump") && m_isGrounded)
@@ -86,8 +91,40 @@ public class PlayerMovementController : MonoBehaviour
         m_velocity.y = Mathf.Sqrt(m_jumpHeight * -2f * m_gravity);
     }
 
+   
+
+
+    #region debug
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(m_groundCheck.position, m_groundOffset);
     }
+    #endregion
+
+
+
+    #region getter setter
+    public void SetSpeed(float value)
+    {
+        m_speed = value * PublicVariables.PLAYER_BASE_SPEED;
+    }
+
+    public float GetSpeed()
+    {
+        return m_speed;
+    }
+
+    public float GetHorizontalInput()
+    {
+        return m_horizontalInput;
+    }
+
+    public float GetVerticalInput()
+    {
+        return m_verticalInput;
+    }
+
+
+    #endregion
+
 }
