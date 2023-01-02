@@ -19,7 +19,7 @@ public class PlayerMovementController : MonoBehaviour
 
     #region jumping
     [SerializeField] private float m_jumpHeight = 5f;
-
+    private bool m_isJumping = false;
     #endregion
 
 
@@ -46,24 +46,25 @@ public class PlayerMovementController : MonoBehaviour
 
     void Update()
     {
+        // get inputs
+        m_horizontalInput = Input.GetAxis("Horizontal");
+        m_verticalInput = Input.GetAxis("Vertical");
+
+
         CheckGrounded();
+    }
+
+    private void FixedUpdate()
+    {
         Move();
+        Jump();
+        ApplyGravity();
     }
 
     private void Move()
     {
-        m_horizontalInput = Input.GetAxis("Horizontal");
-        m_verticalInput = Input.GetAxis("Vertical");
-
         Vector3 direction = transform.right * m_horizontalInput + transform.forward * m_verticalInput;
         m_characterController.Move(direction * m_speed * Time.deltaTime);
-
-        if (Input.GetButtonDown("Jump") && m_isGrounded)
-        {
-            Jump();
-        }
-
-        ApplyGravity();
 
     }
 
@@ -88,7 +89,12 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Jump()
     {
-        m_velocity.y = Mathf.Sqrt(m_jumpHeight * -2f * m_gravity);
+        if (m_isJumping)
+        {
+            m_velocity.y = Mathf.Sqrt(m_jumpHeight * -2f * m_gravity);
+            m_isJumping = false;
+        }
+      
     }
 
    
@@ -122,6 +128,16 @@ public class PlayerMovementController : MonoBehaviour
     public float GetVerticalInput()
     {
         return m_verticalInput;
+    }
+
+    public void SetJumping(bool jump)
+    {
+        m_isJumping = jump;
+    }
+
+    public bool IsGrounded()
+    {
+        return m_isGrounded;
     }
 
 

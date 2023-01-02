@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class PublicVariables
 {
-    public static float PLAYER_BASE_SPEED = 10f;
+    public static float PLAYER_BASE_SPEED = 5f;
     
 }

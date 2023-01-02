@@ -14,10 +14,25 @@ public class PlayerRunState : PlayerBaseState
 
     public override void UpdateState()
     {
-        if (!Input.GetKey(KeyCode.LeftShift))
+        // CHANGE RECOIL
+
+        // LEAVE STATE
+        if (m_player.GetMovementController().IsGrounded())
         {
-            Debug.Log("UpdateState: NOT Input.GetKey(KeyCode.LeftShift)");
-            m_player.SwitchState(Enums.PlayerState.NORMAL);
+            // if pressed Jump 
+            if (Input.GetButtonDown("Jump"))
+            {
+                m_player.GetMovementController().SetJumping(true);
+            }
+            if (!Input.GetKey(KeyCode.LeftShift))
+            {
+                m_player.SwitchState(Enums.PlayerState.NORMAL);
+            }
         }
+        else
+        {
+            m_player.SwitchState(Enums.PlayerState.ONAIR);
+        }
+
     }
 }
