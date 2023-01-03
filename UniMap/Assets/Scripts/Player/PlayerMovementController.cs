@@ -115,17 +115,17 @@ public class PlayerMovementController : MonoBehaviour
         m_speed = value * PublicVariables.PLAYER_BASE_SPEED;
     }
 
-    public float GetSpeed()
+    internal float GetSpeed()
     {
         return m_speed;
     }
 
-    public float GetHorizontalInput()
+    internal float GetHorizontalInput()
     {
         return m_horizontalInput;
     }
 
-    public float GetVerticalInput()
+    internal float GetVerticalInput()
     {
         return m_verticalInput;
     }
@@ -135,9 +135,14 @@ public class PlayerMovementController : MonoBehaviour
         m_isJumping = jump;
     }
 
-    public bool IsGrounded()
+    internal bool IsGrounded()
     {
         return m_isGrounded;
+    }
+
+    internal float GetVelocity()
+    {
+        return m_velocity.y;
     }
 
 
