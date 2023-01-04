@@ -44,7 +44,7 @@ public class PlayerMovementController : MonoBehaviour
 
 
 
-    void Update()
+    private void Update()
     {
         // get inputs
         m_horizontalInput = Input.GetAxis("Horizontal");

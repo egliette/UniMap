@@ -2,48 +2,65 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponManager : MonoBehaviour
+public partial class WeaponManager : MonoBehaviour
 {
     [SerializeField] private Transform m_firingPos;
     [SerializeField] private float m_fireRate = 0.3f;
-    [SerializeField] private float m_bulletVelocity;
-    [SerializeField] private ParticleSystem m_bulletLaunchEffect;
     private float m_fireRateTimer = 0f;
     private bool m_isFiring = false;
+   
+
+    [SerializeField] private float m_bulletVelocity;
+    [SerializeField] private ParticleSystem m_bulletLaunchEffect;
 
 
-    [SerializeField] private GameObject m_bulletPrefab;
+    private ObjectPooler m_objectPooler;
+
     void Start()
     {
+        m_objectPooler = ObjectPooler.Instance;
+        m_bulletsLeft = m_magSize;
         m_fireRateTimer = m_fireRate;
+        m_totalBullets = PublicVariables.TOTAL_BULLETS;
     }
 
     void Update()
     {
-        if (m_isFiring)
+        if (m_onReload)
+        {
+            Reload();
+        }
+        else if (m_isFiring)
         {
             Fire();
         }
         else
         {
             m_fireRateTimer = m_fireRate;
+            m_reloadTimer = 0;
         }
     }
 
     private void Fire()
     {
-        if (m_fireRateTimer >= m_fireRate)
+        if (!IsMagEmpty())
         {
-            // Do the Firing
-            GameObject currentBullet = Instantiate(m_bulletPrefab, m_firingPos.position, m_firingPos.rotation);
-            Rigidbody rb = currentBullet.GetComponent<Rigidbody>();
-            rb.AddForce(m_firingPos.forward * m_bulletVelocity, ForceMode.Impulse);
-            m_bulletLaunchEffect.Play();
+            if (m_fireRateTimer >= m_fireRate)
+            {
+                // Do the Firing
+                GameObject currentBullet = m_objectPooler.SpawnFromPool(PublicVariables.BULLET_TAG, m_firingPos.position, m_firingPos.rotation);
+                Rigidbody rb = currentBullet.GetComponent<Rigidbody>();
+                rb.AddForce(m_firingPos.forward * m_bulletVelocity, ForceMode.Impulse);
+                m_bulletsLeft--;
 
-            // reset timer
-            m_fireRateTimer = 0f;
+                // Effect
+                m_bulletLaunchEffect.Play();
+
+                // reset timer
+                m_fireRateTimer = 0f;
+            }
+            m_fireRateTimer += Time.deltaTime;
         }
-        m_fireRateTimer += Time.deltaTime;
     }
 
     #region public methods
@@ -56,5 +73,11 @@ public class WeaponManager : MonoBehaviour
     {
         m_isFiring = false;
     }
+
+    public void StartReloading()
+    {
+        m_onReload = true;
+    }
+
     #endregion
 }

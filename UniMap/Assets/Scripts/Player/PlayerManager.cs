@@ -89,6 +89,9 @@ public class PlayerManager : MonoBehaviour
         m_animator.SetFloat("speed", GetMovementController().GetSpeed() / PublicVariables.PLAYER_BASE_SPEED);
         m_animator.SetFloat("velocity", GetMovementController().GetVelocity());
         m_animator.SetBool("grounded", GetMovementController().IsGrounded());
+
+        m_animator.SetBool("firing", GetFiringController().IsPlayerFiring());
+        m_animator.SetBool("reloading", GetFiringController().IsPlayerReloading());
     }
     #endregion
 

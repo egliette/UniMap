@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using System;
+using UnityEngine.Animations.Rigging;
 
 public class PlayerFiringController : MonoBehaviour
 {
@@ -16,11 +17,23 @@ public class PlayerFiringController : MonoBehaviour
 
     // Firing
     [SerializeField] private WeaponManager m_weapon;
+    private bool m_isFiring;
+
+    // Reloading
+    private bool m_isReloading;
+
+    // Animation rig set up for reloading
+    [SerializeField] private MultiAimConstraint m_rightHandConstraint;
+    [SerializeField] private TwoBoneIKConstraint m_leftHandIKConstraint;
     private void Update()
     {
-        Aim();
         AimDownSight();
-        Fire();
+        WeaponUpdate();
+    }
+
+    private void FixedUpdate()
+    {
+        Aim();
     }
 
     private void Aim()
@@ -30,20 +43,45 @@ public class PlayerFiringController : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, m_aimMask))
         {
-            m_aimPos.position = Vector3.Lerp(m_aimPos.position, hit.point, m_aimSmoothSpeed * Time.deltaTime);
+            //m_aimPos.position = Vector3.Lerp(m_aimPos.position, hit.point, m_aimSmoothSpeed * Time.deltaTime);
+            m_aimPos.position = hit.point;
         }
     }
 
-    private void Fire()
+    private void WeaponUpdate()
     {
-        // left click
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (!m_weapon.IsOutOfBullet() || !m_weapon.IsMagEmpty())
         {
-            m_weapon.StartFiring();
+            if (!m_weapon.IsOutOfBullet())
+            {
+                if(Input.GetKeyDown(KeyCode.R) && m_weapon.IsLowOnBullet() || m_weapon.IsMagEmpty())
+                {
+                    StartReloading();
+                }
+                else if (IsPlayerReloading() && !m_weapon.OnReloading())
+                {
+                    StopReloading();
+                }
+            }
+           
+
+
+            if (Input.GetKey(KeyCode.Mouse0))
+            {
+                m_weapon.StartFiring();
+                m_isFiring = true;
+            }
+            else
+            {
+                m_weapon.StopFiring();
+                m_isFiring = false;
+            }
         }
         else
         {
             m_weapon.StopFiring();
+            m_isFiring = false;
+            StopReloading();
         }
     }
     private void AimDownSight()
@@ -58,5 +96,31 @@ public class PlayerFiringController : MonoBehaviour
             m_aimCamera.SetActive(false);
         }
     }
+
+    private void StartReloading()
+    {
+        m_isReloading = true;
+        m_weapon.StartReloading();
+        m_rightHandConstraint.weight = 0;
+        m_leftHandIKConstraint.weight = 0;
+    }
+
+    private void StopReloading()
+    {
+        m_isReloading = false;
+        m_rightHandConstraint.weight = 1;
+        m_leftHandIKConstraint.weight = 1;
+    }
+    public bool IsPlayerReloading()
+    {
+        return m_isReloading;
+    }
+
+    public bool IsPlayerFiring()
+    {
+        return m_isFiring;
+    }
+
+    
 
 }

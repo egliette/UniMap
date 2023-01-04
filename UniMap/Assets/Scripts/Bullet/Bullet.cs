@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-
+    [SerializeField] private ParticleSystem m_bulletExplode;
+    private void OnCollisionEnter(Collision collision)
+    { 
+        Debug.Log("Hit " + collision.gameObject.name); 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
