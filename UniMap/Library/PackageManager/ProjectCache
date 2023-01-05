@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638084517023636189
-    m_Hash: 2259569568
+      ticks: 638085424888214108
+    m_Hash: 3495692989
   m_LockFileStatus:
     m_FilePath: D:/WorkSpace/School Project/UniMap/UniMap/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638084517023745954
-    m_Hash: 178426982
+      ticks: 638085424888214108
+    m_Hash: 1766185179
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
