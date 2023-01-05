@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638084414029664274
-    m_Hash: 3495692989
+      ticks: 638084517023636189
+    m_Hash: 2259569568
   m_LockFileStatus:
     m_FilePath: D:/WorkSpace/School Project/UniMap/UniMap/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638084414029664274
-    m_Hash: 1766185179
+      ticks: 638084517023745954
+    m_Hash: 178426982
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -3835,7 +3835,7 @@ m_PackageAssets:
         email: 
         url: 
       category: 
-      type: 
+      type: asset
       description: Unity's C# SIMD math library providing vector types and math functions
         with a shader like syntax.
       status: 4
@@ -3890,7 +3890,7 @@ m_PackageAssets:
         isDefault: 1
         capabilities: 7
       hasRegistry: 1
-      hideInEditor: 1
+      hideInEditor: 0
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0

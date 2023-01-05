@@ -5,7 +5,7 @@ using UnityEngine;
 public partial class WeaponManager : MonoBehaviour
 {
     [SerializeField] private Transform m_firingPos;
-    [SerializeField] private float m_fireRate = 0.3f;
+    [SerializeField] private float m_fireRate = PublicVariables.FIRE_RATE;
     private float m_fireRateTimer = 0f;
     private bool m_isFiring = false;
    
@@ -33,11 +33,6 @@ public partial class WeaponManager : MonoBehaviour
         else if (m_isFiring)
         {
             Fire();
-        }
-        else
-        {
-            m_fireRateTimer = m_fireRate;
-            m_reloadTimer = 0;
         }
     }
 
@@ -72,6 +67,7 @@ public partial class WeaponManager : MonoBehaviour
     public void StopFiring()
     {
         m_isFiring = false;
+        m_fireRateTimer = m_fireRate;
     }
 
     public void StartReloading()

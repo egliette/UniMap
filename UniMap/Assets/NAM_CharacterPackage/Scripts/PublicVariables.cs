@@ -10,4 +10,5 @@ public class PublicVariables
 
     public static float PLAYER_BASE_SPEED = 5f;
 
+    public static float FIRE_RATE = 0.5f;
 }

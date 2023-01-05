@@ -39,6 +39,7 @@ public partial class WeaponManager : MonoBehaviour
             m_bulletsLeft = (m_totalBullets >= m_magSize)? m_magSize : m_totalBullets;
             m_totalBullets -= bulletToAdd;
             m_onReload = false;
+            m_reloadTimer = 0;
         }
     }
 
