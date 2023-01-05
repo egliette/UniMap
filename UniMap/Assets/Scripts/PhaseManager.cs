@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class PhaseManager : MonoBehaviour
 {
-    [Header ("Phase 1")]
-    [SerializeField] private Transform[] m_Phase1SpawnPoints;
-    [SerializeField] private Transform m_Phase1DominationPointLocation;
+    [SerializeField] private Transform[] m_DominationPointsLocation;
 
-    [Header ("Phase 2")]
-    [SerializeField] private Transform[] m_Phase2SpawnPoints;
-    [SerializeField] private Transform m_Phase2DominationPointLocation;
-    
+
     [Header ("Prefabs")]
     [SerializeField] private GameObject m_DominationPoint;
     [SerializeField] private GameObject m_Enemy;
@@ -20,6 +15,7 @@ public class PhaseManager : MonoBehaviour
 
     private int m_Phase = 1;
     private bool m_PhaseCompleted = true;
+    private List<int> m_LocationPass = new List<int>();
 
     private void Start()
     {
@@ -31,19 +27,30 @@ public class PhaseManager : MonoBehaviour
         if (m_PhaseCompleted)
         {
             m_PhaseCompleted = false;
+            int index = Random.Range(0, m_DominationPointsLocation.Length);
+            while (m_LocationPass.Contains(index) && !m_LocationPass.Count.Equals(0))
+                index = Random.Range(0, m_DominationPointsLocation.Length);
+            m_LocationPass.Add(index);
+            Debug.Log(index);
+
             if (m_Phase == 1)
-                StartCoroutine(Phase1(40));
+                StartCoroutine(Phase1(40, m_DominationPointsLocation[index]));
             else if (m_Phase == 2)
-                StartCoroutine(Phase2(40));
+                StartCoroutine(Phase2(40, m_DominationPointsLocation[index]));
         }
     }
     
-    private IEnumerator Phase1(int delayTime)
+    private IEnumerator Phase1(int delayTime, Transform dominationPointLocation)
     {
-        int  numberOfSpawnPoint = m_Phase1SpawnPoints.Length;
         var dominationPoint = Instantiate(m_DominationPoint, 
-                                          m_Phase1DominationPointLocation.position, 
-                                          m_Phase1DominationPointLocation.rotation);
+                                          dominationPointLocation.position, 
+                                          dominationPointLocation.rotation);
+
+        foreach (Transform spawnPoint in dominationPointLocation)
+        {
+            Instantiate(m_Enemy, spawnPoint.position, spawnPoint.rotation);  
+        }
+
         while (m_Phase == 1)
         {    
             int time = dominationPoint.GetComponent<DominationPoint>().GetSeconds();
@@ -56,22 +63,23 @@ public class PhaseManager : MonoBehaviour
                 break;
             }
 
-            for (int i = 0; i < numberOfSpawnPoint; i++) 
-            {
-                Instantiate(m_Enemy, m_Phase1SpawnPoints[i].position, m_Phase1SpawnPoints[i].rotation);   
-            }
             yield return new WaitForSeconds(delayTime);
         }
     }
 
-    private IEnumerator Phase2(int delayTime)
+    private IEnumerator Phase2(int delayTime, Transform dominationPointLocation)
     {
-        int  numberOfSpawnPoint = m_Phase2SpawnPoints.Length;
         var dominationPoint = Instantiate(m_DominationPoint, 
-                                          m_Phase2DominationPointLocation.position, 
-                                          m_Phase2DominationPointLocation.rotation);
+                                          dominationPointLocation.position, 
+                                          dominationPointLocation.rotation);
+
+        foreach (Transform spawnPoint in dominationPointLocation)
+        {
+            Instantiate(m_BigEnemy, spawnPoint.position, spawnPoint.rotation);  
+        }
+
         while (m_Phase == 2)
-        {       
+        {    
             int time = dominationPoint.GetComponent<DominationPoint>().GetSeconds();
             
             if (time >= 20)
@@ -82,11 +90,9 @@ public class PhaseManager : MonoBehaviour
                 break;
             }
 
-            for (int i = 0; i < numberOfSpawnPoint; i++) 
-            {
-                Instantiate(m_BigEnemy, m_Phase2SpawnPoints[i].position, m_Phase2SpawnPoints[i].rotation);   
-            }
             yield return new WaitForSeconds(delayTime);
         }
     }
+
+
 }
