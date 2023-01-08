@@ -7,6 +7,7 @@ public class EnemyAI : MonoBehaviour
 {
     [SerializeField] private float m_AttackRange = 1f;
     [SerializeField] private float m_AttackTime = 2f;
+    [SerializeField] private int m_AttackDamage = 10;
 
     [SerializeField] private float m_Speed = 10f;
 
@@ -15,12 +16,14 @@ public class EnemyAI : MonoBehaviour
     private LayerMask m_PlayerMask;
     private NavMeshAgent m_NavMeshAgent;
     private bool m_PlayerInAttackRange;
+    private PlayerHealth m_playerHealth;
 
 
     private void Awake()
     {
         m_PlayerMask = LayerMask.GetMask("Player");
         m_Player = GameObject.Find("Player").transform;
+        m_playerHealth = m_Player.GetComponent<PlayerHealth>();
         m_NavMeshAgent = GetComponent<NavMeshAgent>();
         m_Anim = GetComponent<Animator>();
     }
@@ -61,6 +64,14 @@ public class EnemyAI : MonoBehaviour
         StartCoroutine(ResetAttack());
     }
 
+    public void DealDamage()
+    {
+        if (Physics.CheckSphere(transform.position, m_AttackRange, m_PlayerMask))
+        {
+            m_playerHealth.TakeDamage(m_AttackDamage);
+        }
+    }
+
     private IEnumerator ResetAttack()
     {   
         yield return new WaitForSeconds(m_AttackTime);
@@ -74,5 +85,6 @@ public class EnemyAI : MonoBehaviour
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = lookRotation;
     }
+
 
 }

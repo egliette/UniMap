@@ -43,8 +43,4 @@ public class PlayerMotor : MonoBehaviour
             m_PlayerVelocity.y = Mathf.Sqrt(m_JumpHeight * -3.0f * m_Gravity);
         }
     }
-
-    private void OnParticleCollision(GameObject other) {
-        Debug.Log("It hurt!");    
-    }
 }

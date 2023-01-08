@@ -392,7 +392,6 @@ GameObject:
   - component: {fileID: 9153241457559814663}
   - component: {fileID: 9153241457559814658}
   - component: {fileID: 9153241457559814661}
-  - component: {fileID: 9153241457559814660}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -464,19 +463,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &9153241457559814660
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9153241457559814662}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9153241457562616480
 GameObject:
   m_ObjectHideFlags: 0
@@ -2188,6 +2174,8 @@ GameObject:
   - component: {fileID: 9153241458836314137}
   - component: {fileID: 9153241458836314136}
   - component: {fileID: 9153241458836314139}
+  - component: {fileID: 8228448477636454674}
+  - component: {fileID: 4967714526808289405}
   m_Layer: 0
   m_Name: BigEnemy
   m_TagString: Untagged
@@ -2245,6 +2233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AttackRange: 1
   m_AttackTime: 2
+  m_AttackDamage: 15
   m_Speed: 8
 --- !u!195 &9153241458836314139
 NavMeshAgent:
@@ -2268,6 +2257,33 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &8228448477636454674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9153241458836314138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da9423442dde1364ab1435c039ed2d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Health: 200
+--- !u!136 &4967714526808289405
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9153241458836314138}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.25
+  m_Height: 1.8
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &9153241458853975870
 GameObject:
   m_ObjectHideFlags: 0

@@ -15439,6 +15439,8 @@ GameObject:
   - component: {fileID: 7766387842416094011}
   - component: {fileID: 7766387842416094010}
   - component: {fileID: 7766387842416094009}
+  - component: {fileID: 8897065421571852764}
+  - component: {fileID: 9164309513790047606}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -15498,6 +15500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AttackRange: 1
   m_AttackTime: 2
+  m_AttackDamage: 20
   m_Speed: 8
 --- !u!195 &7766387842416094009
 NavMeshAgent:
@@ -15521,6 +15524,33 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &8897065421571852764
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7766387842416094008}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.25
+  m_Height: 1.8
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &9164309513790047606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7766387842416094008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da9423442dde1364ab1435c039ed2d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Health: 400
 --- !u!1 &7766387842487181646
 GameObject:
   m_ObjectHideFlags: 0
@@ -15722,7 +15752,6 @@ GameObject:
   - component: {fileID: 7766387842623074597}
   - component: {fileID: 7766387842623074592}
   - component: {fileID: 7766387842623074599}
-  - component: {fileID: 7766387842623074598}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -15794,19 +15823,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7766387842623074598
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7766387842623074596}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7766387842626700727
 GameObject:
   m_ObjectHideFlags: 0

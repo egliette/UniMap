@@ -417,7 +417,6 @@ GameObject:
   - component: {fileID: 7366903856195348959}
   - component: {fileID: 7366903856195348956}
   - component: {fileID: 7366903856195348957}
-  - component: {fileID: 7366903856195348958}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -489,19 +488,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7366903856195348958
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7366903856195348928}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7366903856195778793
 GameObject:
   m_ObjectHideFlags: 0
@@ -1638,6 +1624,8 @@ GameObject:
   - component: {fileID: 7366903857215588051}
   - component: {fileID: 7366903857215588053}
   - component: {fileID: 7366903857215588052}
+  - component: {fileID: 5597478836194613215}
+  - component: {fileID: 3226873311758047003}
   m_Layer: 0
   m_Name: RangedEnemy
   m_TagString: Untagged
@@ -1673,7 +1661,7 @@ Animator:
   m_GameObject: {fileID: 7366903857215588054}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: cd2bf2c1a0cb49841bd54b1562c0ed7f, type: 3}
-  m_Controller: {fileID: 9100000, guid: 1c038c5438761f7488acecd5b145d23f, type: 2}
+  m_Controller: {fileID: 9100000, guid: e2c63f008911aa9438a1737e61d445e9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1721,6 +1709,34 @@ MonoBehaviour:
   m_ShootingPoint: {fileID: 7366903856258721229}
   m_BulletPrefab: {fileID: 4409072911390822678, guid: bbd8ff1fb215d384bb5349e46e562ad7, type: 3}
   m_Speed: 12
+  m_YOffset: 0.1
+--- !u!114 &5597478836194613215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7366903857215588054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da9423442dde1364ab1435c039ed2d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Health: 150
+--- !u!136 &3226873311758047003
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7366903857215588054}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.25
+  m_Height: 1.69
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &7366903857230142838
 GameObject:
   m_ObjectHideFlags: 0

@@ -2374,7 +2374,6 @@ GameObject:
   - component: {fileID: 8168472255427230785}
   - component: {fileID: 8168472255427230788}
   - component: {fileID: 8168472255427230787}
-  - component: {fileID: 8168472255427230786}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -2446,19 +2445,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8168472255427230786
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8168472255427230784}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8177599235579175564
 GameObject:
   m_ObjectHideFlags: 0
@@ -2564,6 +2550,8 @@ GameObject:
   - component: {fileID: 8168472255124821803}
   - component: {fileID: 8168472255124821800}
   - component: {fileID: 8168472255124821801}
+  - component: {fileID: 2317120088542229735}
+  - component: {fileID: 8942276936994612572}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -2621,6 +2609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AttackRange: 1
   m_AttackTime: 2
+  m_Health: 100
   m_Speed: 10
 --- !u!195 &8168472255124821801
 NavMeshAgent:
@@ -2644,6 +2633,32 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &2317120088542229735
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9051487502760087844}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.25
+  m_Height: 1.75
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &8942276936994612572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9051487502760087844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da9423442dde1364ab1435c039ed2d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9104376978999800447
 GameObject:
   m_ObjectHideFlags: 0
