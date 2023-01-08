@@ -7,7 +7,8 @@ public class Bullet : MonoBehaviour
     [SerializeField] private ParticleSystem m_bulletExplode;
     private void OnCollisionEnter(Collision collision)
     { 
-        Debug.Log("Hit " + collision.gameObject.name); 
+        Debug.Log("Hit " + collision.gameObject.name);
+        gameObject.SetActive(false);
     }
 
 }
