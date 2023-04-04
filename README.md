@@ -15,14 +15,14 @@ This is an open-source project so feel free when using it in your own project. A
 ## APA
 
 ```
-Le, M., Do Nguyen, D. H., & Do, H. N. UniMap [Computer software]. https://github.com/egliette/UniMap
+Le, M. T., Do Nguyen, D. H., & Do, H. N. UniMap [Computer software]. https://github.com/egliette/UniMap
 ```
 
 ## BibTex
 
 ```
 @software{Le_UniMap,
-author = {Le, Minh and Do Nguyen, Duy Hoang and Do, Hoai Nam},
+author = {Le, Minh Tu and Do Nguyen, Duy Hoang and Do, Hoai Nam},
 title = {{UniMap}},
 url = {https://github.com/egliette/UniMap}
 }
