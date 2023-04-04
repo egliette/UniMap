@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Le"
+  given-names: "Minh"
+- family-names: "Do Nguyen"
+  given-names: "Duy Hoang"
+- family-names: "Do"
+  given-names: "Hoai Nam"
+title: "UniMap"
+url: "https://github.com/egliette/UniMap"
